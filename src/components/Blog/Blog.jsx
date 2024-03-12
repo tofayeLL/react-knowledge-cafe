@@ -1,12 +1,14 @@
-
+import { FaBookmark } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import frame from '../../assets/images/Frame.png'
-const Blog = ({blog}) => {
+
+const Blog = ({blog, handleAddToBookmark}) => {
     const {title, cover, author_img, author, posted_date, reading_time, hashtags} = blog;
     return (
-        <div>
-            <img src={cover} alt="" />
-            <div className='flex justify-between'>
+        <div className='my-20 space-y-3'>
+
+            <img className='w-full' src={cover} alt="" />
+
+            <div className='flex justify-between '>
 
                 <div className='flex items-center gap-3'>
                     <div className='w-[10%]'>
@@ -20,18 +22,18 @@ const Blog = ({blog}) => {
 
                 </div>
 
-
-
-                <div className='flex  items-center '>
+                <div className='flex  items-center space-x-1'>
                     <span>{reading_time} min read</span>
-                    <button ><img src={frame} alt="" className=''/></button>
+                    <button onClick={handleAddToBookmark}><FaBookmark></FaBookmark></button>
 
                 </div>
+
             </div>
             <h3 className='text-xl'>{title}</h3>
+
             <p>
                 {
-                    hashtags.map(hash => <span><a href="">#{hash}  </a></span>)
+                    hashtags.map((hash, index) => <span key={index}><a href="">#{hash}  </a></span>)
                 }
             </p>
             
