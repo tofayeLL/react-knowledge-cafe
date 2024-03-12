@@ -7,8 +7,9 @@ import Header from './components/Header/Header'
 function App() {
   const [bookmarks, setBookmarks] = useState([]);
 
-  const handleAddToBookmark = () => {
-            console.log('click bookmark')
+  const handleAddToBookmark = (blog) => {
+         const newBookmarks = [...bookmarks, blog];
+         setBookmarks(newBookmarks);
   }
 
 
@@ -18,7 +19,7 @@ function App() {
       <Header></Header>
       <div className='flex container mx-auto p-16'>
         <Blogs handleAddToBookmark={handleAddToBookmark}></Blogs>
-        <Bookmarks ></Bookmarks>
+        <Bookmarks bookmarks={bookmarks} ></Bookmarks>
       </div>
 
 
